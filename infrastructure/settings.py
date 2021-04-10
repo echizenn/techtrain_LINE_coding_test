@@ -7,3 +7,8 @@ TODAY = 1
 START_TIME = datetime.datetime(THIS_YEAR, THIS_MONTH, TODAY)
 
 HOURS_A_DAY = 24
+MICROSECONDS_A_HOURS = datetime.timedelta(hours=1)/datetime.timedelta(microseconds=1)
+
+
+MIDNIGHT_ADDITIONAL_TIME_RATE = 125
+MIDNIGHT_ADDITIONAL_DISTANCE_RATE = 125

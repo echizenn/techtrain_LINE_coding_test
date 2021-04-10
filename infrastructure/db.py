@@ -17,7 +17,7 @@ def create(input_db):
         dbインスタンス
     """
     cumulative_distance = distance.Distance(0)
-    cumulative_time = settings.START_TIME
+    cumulative_time = datetime.timedelta()
 
     hhmmssfff, dist = input_db[0].split()
 
@@ -30,17 +30,17 @@ def create(input_db):
     minute = int(minute)
     second, fff = map(int, secondfff.split("."))
 
-    last_record = datetime.datetime(
+    last_record_time = datetime.datetime(
         year=settings.THIS_YEAR,
         month=settings.THIS_MONTH,
-        day=hour//settings.HOURS_A_DAY+settings.TODAY,
+        day=settings.TODAY+hour//settings.HOURS_A_DAY,
         hour=hour%settings.HOURS_A_DAY,
         minute=minute,
         second=second,
         microsecond=fff*1000
         )
 
-    db = DB(cumulative_distance, last_record, cumulative_time)
+    db = DB(cumulative_distance, last_record_time, cumulative_time)
     return db
 
 @dataclass
@@ -50,10 +50,10 @@ class DB():
 
     Attributes:
         cumulative_distance: 現在までの走行距離*1000
-        last_record: 前回の記録時間(datetime.microsecondを使って管理)
+        last_record_time: 前回の記録時間(datetime.microsecondを使って管理)
         cumulative_time: 現在までの低速走行時間(microsecond(10**6microsecond = 1second))
     """
     cumulative_distance: distance.Distance
-    last_record: datetime.datetime
-    cumulative_time: datetime.datetime
+    last_record_time: datetime.datetime
+    cumulative_time: datetime.timedelta
 

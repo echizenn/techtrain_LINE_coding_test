@@ -1,4 +1,4 @@
-from sys import stdin
+import sys
 from typing import List
 
 from application import application
@@ -21,9 +21,13 @@ def main(input_db: List[str], input_queries: List[str]):
     for input_query in input_queries:
         app.execute(input_query)
 
+    charge = app.require_charge()
+    print(charge)
+    sys.exit()
+
 
 if __name__=='__main__':
-    input = stdin.readline
+    input = sys.stdin.readline
 
     # 入力を受け付ける
     db = [input()[:-1]]
