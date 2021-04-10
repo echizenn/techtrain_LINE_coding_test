@@ -1,3 +1,4 @@
+from sys import stdin
 from typing import List
 
 from application import application
@@ -25,5 +26,13 @@ if __name__=='__main__':
     input = stdin.readline
 
     # 入力を受け付ける
+    db = [input()[:-1]]
+
+    queries = list()
+    while True:
+        input_query = input()
+        if input_query == "":
+            break
+        queries.append(input_query[:-1])
 
     main(db, queries)
