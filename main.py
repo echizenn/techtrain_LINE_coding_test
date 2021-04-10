@@ -2,7 +2,7 @@ from sys import stdin
 from typing import List
 
 from application import application
-from infrastructure import db
+import infrastructure
 
 def main(input_db: List[str], input_queries: List[str]):
     """
@@ -14,7 +14,7 @@ def main(input_db: List[str], input_queries: List[str]):
         input_query:
             クエリ部分の標準入力
     """
-    db = db.create(input_db)
+    db = infrastructure.db.create(input_db)
 
     app = application.App(db)
 
