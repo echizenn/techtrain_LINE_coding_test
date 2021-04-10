@@ -1,5 +1,9 @@
+import datetime
+
 THIS_YEAR = 2021
 THIS_MONTH = 4
 TODAY = 1
+
+START_TIME = datetime.datetime(THIS_YEAR, THIS_MONTH, TODAY)
 
 HOURS_A_DAY = 24

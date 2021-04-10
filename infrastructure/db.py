@@ -3,6 +3,7 @@ import datetime
 import sys
 
 from infrastructure import settings
+from domain import distance
 
 def create(input_db):
     """
@@ -15,10 +16,8 @@ def create(input_db):
     Returns:
         dbインスタンス
     """
-    # 入力を受け取り、それぞれレポジトリを作成し、dbインスタンスに格納する
-    # 定数はレポジトリにせずにインスタンス変数としていい
-    cumulative_distance = 0
-    cumulative_time = 0
+    cumulative_distance = distance.Distance(0)
+    cumulative_time = settings.START_TIME
 
     hhmmssfff, dist = input_db[0].split()
 
@@ -54,7 +53,7 @@ class DB():
         last_record: 前回の記録時間(datetime.microsecondを使って管理)
         cumulative_time: 現在までの低速走行時間(microsecond(10**6microsecond = 1second))
     """
-    cumulative_distance: int
+    cumulative_distance: distance.Distance
     last_record: datetime.datetime
-    cumulative_time: int
+    cumulative_time: datetime.datetime
 
